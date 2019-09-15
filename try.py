@@ -43,7 +43,12 @@ def getnew5(new4):
     print(new5)
     return new5
     
-    
+def getnew7(new6):
+    pp = re.compile(r'.+(号){1}')
+    new7match = pp.search(new6)
+    new7 = new7match.group(0)
+    print(new7)
+    return new7
 def main():
     #s = open("data.txt","r")
     s = input()
@@ -96,5 +101,9 @@ def main():
     new5 = getnew5(new4)
     new6 = cutSame(new4,new5)
     print(new6)
+    new7 = getnew7(new6)
+    last = cutSame(new6,new7)
+    print(last)
+    
 main()
 
