@@ -8,7 +8,11 @@ class result:
     city = ""
     area = ""
     town = ""
+    new5 = ""
+    new7 = ""
+    last = ""
     detail = ""
+    
     
 def getname(s):
     ss = s.split(",")
@@ -17,7 +21,7 @@ def getphone(s):
     pat = re.compile(r'[1-9]\d{10}')
     phonematch = pat.search(s)
     phone = phonematch.group(0)
-    print(phone)
+    #print(phone)
     return phone
 def getdetailaddress(ss,phone):
     addressplit = ss[1].split(phone)
@@ -40,14 +44,14 @@ def getnew5(new4):
     p = re.compile(r'.+(路|街|巷){1}')
     new5match = p.search(new4)
     new5 = new5match.group(0)
-    print(new5)
+    #print(new5)
     return new5
     
 def getnew7(new6):
     pp = re.compile(r'.+(号){1}')
     new7match = pp.search(new6)
     new7 = new7match.group(0)
-    print(new7)
+    #print(new7)
     return new7
 def main():
     #s = open("data.txt","r")
@@ -59,6 +63,7 @@ def main():
     print(names)
     phone = getphone(s)
     address = getdetailaddress(ss,phone)
+    address = address[:-1]
     print(address)
     #开始处理json文件
     f = open('pcas-code.json',encoding='utf-8')
@@ -98,12 +103,14 @@ def main():
                                     print(new4)
                                     result.detail = new4
     
-    new5 = getnew5(new4)
-    new6 = cutSame(new4,new5)
-    print(new6)
-    new7 = getnew7(new6)
-    last = cutSame(new6,new7)
-    print(last)
+    result.new5 = getnew5(new4)
+    new6 = cutSame(new4,result.new5)
+    #print(new6)
+    result.new7 = getnew7(new6)
+    result.last = cutSame(new6,result.new7)
+    print(result.last)
+    print()
     
 main()
+
 
