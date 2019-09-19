@@ -194581,7 +194581,11 @@ def cutSame(address, province):
 def getroad(new4):
     p = re.compile(r'.+(路|街|巷|桥|岛){1}')
     roadmatch = p.search(new4)
-    road = roadmatch.group(0)
+
+    if roadmatch != None:    
+        road = roadmatch.group(0)
+    else :
+        road = ""
     #print(road)
     return road
 
