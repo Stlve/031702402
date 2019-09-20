@@ -139,7 +139,9 @@ def main():
                     new1 = result.province + new1
                 cities = province['children']
         if result.province == "":
-            print("no find province")
+            json_str = json.dumps(dict(data),ensure_ascii=False)
+            print(json_str)
+           # print("{}")
             return 
         for city in cities:  #市
             two = new1[0] + new1[1]
