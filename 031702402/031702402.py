@@ -139,6 +139,7 @@ def main():
                     new1 = result.province + new1
                 cities = province['children']
         if result.province == "":
+            print("no find province")
             return 
         for city in cities:  #市
             two = new1[0] + new1[1]
@@ -154,6 +155,8 @@ def main():
             result.city = ""
             areas = findcity(cities,new1)
             new3 = new1
+            if areas == {}:
+                return 
         for area in areas:  #县
             three = new2[0] + new2[1]
             if area['name'].find(three) != -1:
@@ -167,6 +170,8 @@ def main():
             result.area = ""
             towns = findarea(areas,new2)
             new4 = new3
+            if towns == {}:
+                return 
         for town in towns: #乡
             four = new3[0] + new3[1]
             if town['name'].find(four) != -1:
